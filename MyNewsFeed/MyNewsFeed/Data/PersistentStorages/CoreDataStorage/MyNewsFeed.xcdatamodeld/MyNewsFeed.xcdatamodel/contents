@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="21G419" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="NewsRequestEntity" representedClassName="NewsRequestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="response" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NewsResponseEntity" inverseName="request" inverseEntity="NewsResponseEntity"/>
+    </entity>
+    <entity name="NewsResponseEntity" representedClassName="NewsResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="totalResults" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="newsSet" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OneNewsResponseEntity" inverseName="newsResponse" inverseEntity="OneNewsResponseEntity"/>
+        <relationship name="request" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="NewsRequestEntity" inverseName="response" inverseEntity="NewsRequestEntity"/>
+    </entity>
+    <entity name="OneNewsResponseEntity" representedClassName="OneNewsResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="publishedAt" attributeType="String"/>
+        <attribute name="sourceName" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="url" attributeType="String"/>
+        <attribute name="urlToImage" optional="YES" attributeType="String"/>
+        <relationship name="newsResponse" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="NewsResponseEntity" inverseName="newsSet" inverseEntity="NewsResponseEntity"/>
+    </entity>
+</model>

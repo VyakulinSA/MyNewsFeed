@@ -1,0 +1,21 @@
+//
+//  DataTransferErrorLogger.swift
+//  MyNewsFeed
+//
+//  Created by Вякулин Сергей on 08.02.2023.
+//
+
+import Foundation
+
+public protocol DataTransferErrorLogger {
+	func log(error: Error)
+}
+
+public final class DataTransferErrorLoggerImp: DataTransferErrorLogger {
+	public init() { }
+	
+	public func log(error: Error) {
+		printIfDebug("-------------")
+		printIfDebug("\(error)")
+	}
+}
